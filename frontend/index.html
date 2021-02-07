@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1 style="text-align: center">Pendulum Simulator</h1>
+
+    <div class="inputs">
+      <div class="input-container ic-p1">
+        <h4>Pendulum 1</h4>
+        <div id="length-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="angle-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="mass-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+      </div>
+      <div class="input-container ic-p2">
+        <h4>Pendulum 2</h4>
+        <div id="length-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="angle-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="mass-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+      </div>
+      <div class="input-container ic-p3">
+        <h4>Pendulum 3</h4>
+        <div id="length-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="angle-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="mass-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+      </div>
+      <div class="input-container ic-p4">
+        <h4>Pendulum 4</h4>
+        <div id="length-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="angle-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="mass-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+      </div>
+      <div class="input-container ic-p5">
+        <h4>Pendulum 5</h4>
+        <div id="length-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="angle-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+        <div id="mass-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+        </div>
+      </div>
+    </div>
+    <div class="other-inputs">
+      <div id="wind-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+      </div>
+      <div id="damping-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+      </div>
+      <div id="fps-input">
+          <span class="label"></span>
+          <input type="range" class="slider" />
+          <span class="value"></span>
+      </div>
+    </div>
+
+    <div class="display">
+      <div class="pendulum-container p1">
+        <div class="pendulum-bob">
+          <div class="line"></div>
+          <div class="border"></div>
+        </div>
+      </div>
+      <div class="pendulum-container p2">
+        <div class="pendulum-bob">
+          <div class="line"></div>
+          <div class="border"></div>
+        </div>
+      </div>
+      <div class="pendulum-container p3">
+        <div class="pendulum-bob">
+          <div class="line"></div>
+          <div class="border"></div>
+        </div>
+      </div>
+      <div class="pendulum-container p4">
+        <div class="pendulum-bob">
+          <div class="line"></div>
+          <div class="border"></div>
+        </div>
+      </div>
+      <div class="pendulum-container p5">
+        <div class="pendulum-bob">
+          <div class="line"></div>
+          <div class="border"></div>
+        </div>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="set">Set</button>
+      <button id="start">start</button>
+      <button id="pause">pause</button>
+      <button id="reset">reset</button>
+      <button id="export">export</button>
+    </div>
+    <div class="log"></div>
+
+    <script src="./index.js"></script>
+  </body>
+  <style></style>
+</html>

@@ -1,0 +1,145 @@
+.inputs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.other-inputs {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.input-container {
+  padding: 10px 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.input-container h4 {
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+}
+.input-container div {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+.label {
+  text-transform: capitalize;
+}
+.slider {
+  width: 100px;
+}
+.value {
+  width: 80px;
+}
+
+.other-inputs button {
+  border-radius: 50%;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.input-container button:hover {
+  background-color: rgb(186, 188, 190);
+}
+
+.display {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgb(240, 236, 255);
+  margin: 50px 100px;
+}
+.pendulum-container {
+  width: 200px;
+  position: relative;
+  transform-origin: 50% 0%;
+  display: flex;
+  justify-content: center;
+}
+.pendulum-bob {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.pendulum-bob .line {
+  width: 1px;
+  position: absolute;
+  left: 15px;
+}
+
+.p1 > .pendulum-bob {
+  top: 100px;
+  background: lightcoral;
+}
+.p2 > .pendulum-bob {
+  top: 100px;
+  background: blue;
+}
+.p3 > .pendulum-bob {
+  top: 100px;
+  background: darkolivegreen;
+}
+.p4 > .pendulum-bob {
+  top: 100px;
+  background: slateblue;
+}
+.p5 > .pendulum-bob {
+  top: 100px;
+  background: rgb(6, 71, 71);
+}
+
+.p1 > .pendulum-bob > .line {
+  height: 100px;
+  top: -100px;
+  background-color: lightcoral;
+}
+.p2 > .pendulum-bob > .line {
+  height: 100px;
+  top: -100px;
+  background-color: blue;
+}
+.p3 > .pendulum-bob > .line {
+  height: 100px;
+  top: -100px;
+  background-color: darkolivegreen;
+}
+.p4 > .pendulum-bob > .line {
+  height: 100px;
+  top: -100px;
+  background-color: slateblue;
+}
+.p5 > .pendulum-bob > .line {
+  height: 100px;
+  top: -100px;
+  background-color: rgb(6, 71, 71);
+}
+
+.controls {
+  display: flex;
+  margin: 50px 100px;
+  justify-content: space-evenly;
+}
+.controls button {
+  padding: 5px 25px;
+}
+
+.log {
+  display: block;
+  height: 500px;
+  border-radius: 15px;
+  margin: 50px 100px;
+  background-color: rgb(7, 0, 59);
+  color: white;
+  padding: 25px;
+  border: 2px solid black;
+  overflow-y: scroll;
+}
