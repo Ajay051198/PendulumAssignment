@@ -108,8 +108,8 @@ This way we can push the "STOP" and "RESTART" commands to this exchange and all 
 
 - Wind is implemented, by introducing a variable that is added to the velocity of the pendulum bob.
 - The mass of the pendulum does not affect its acceleration as it will always be acceleration due to gravity.
-- However the effect of wind will reduce greater the mass of the pendulum. So to implement this logic, the affect of wind is reduced when mass is increased.
-- In the frontend UI, increase in mass is shown with a increase in radius of the pendulum's bob. The fact that a larger radius would mean greater effect of wind is ignore as we can considering mass and not size. (so the larger size is just a representation of the mass and not of the size)
+- However the effect of wind will reduce with increase in the mass of the pendulum. So to implement this logic, the affect of wind is reduced when mass is increased. 
+- In the frontend UI, increase in mass is shown with an increase in radius of the pendulum's bob. The fact that a larger radius would mean greater effect of wind is ignored as we are considering mass and not size. (so the larger size is just a representation of the mass and not of the size)
 
 ### Notes: Frontend
 
