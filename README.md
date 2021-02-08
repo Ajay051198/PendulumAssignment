@@ -40,7 +40,7 @@ The `/position` is used to obtain the xy-coordinates of the neighbouring nodes t
 **URLs:**  
 
 - `/setparams`  [POST] → accepts parameters for a pendulum object and URLs for its left and right neighbours and updates the PendulumManager's pendulum object and neighbour information. The URL returns a JSON response with the status and the pendulum object.
-- `/start` ******[POST] → starts the simulation by calling the start method of the PendulumManager.
+- `/start` [POST] → starts the simulation by calling the start method of the PendulumManager.
 - `/pause` [POST] → pauses the simulation by calling the pause method of the PendulumManager.
 - `/reset` [POST] → resets the simulation by calling the reset method of the PendulumManager.
 - `/angle` [GET]→ return a JSON response containing the current angle offset of the pendulum of the pendulum manager.
