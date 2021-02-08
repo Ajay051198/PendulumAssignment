@@ -44,7 +44,7 @@ The `/position` is used to obtain the xy-coordinates of the neighbouring nodes t
 - `/pause` [POST] → pauses the simulation by calling the pause method of the PendulumManager.
 - `/reset` [POST] → resets the simulation by calling the reset method of the PendulumManager.
 - `/angle` [GET] → return a JSON response containing the current angle offset of the pendulum of the pendulum manager.
-- `/position`[GET] → return a JSON response containing the x and y co-ordinates of the pendulum's bob of the pendulum manager.
+- `/position` [GET] → return a JSON response containing the x and y co-ordinates of the pendulum's bob of the pendulum manager.
 
 ### Guaranteed delivery communication implentation || AMQP Exchange Fanout
 
