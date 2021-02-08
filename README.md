@@ -1,6 +1,6 @@
-# Documentation
+# Pendulum Simulator
 
-## Pendulum Simulator
+## About:
 
 A pendulum simulator built for demonstration purposes
 
