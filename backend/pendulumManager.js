@@ -7,7 +7,7 @@ export class PendulumManager {
     this.simulation_key = null;
     this.pendulum = null;
     this.restartCount = 0;
-
+    this.enablePause = true;
     cq.init(this.commandListener);
   }
 
@@ -17,8 +17,9 @@ export class PendulumManager {
       if (command === "STOP") {
         if (this.simulation_key) {
           this.pause();
+          this.enablePause = false;
           setTimeout(() => {
-            console.log('[INFO]: SENDING RESTART MSG TO QUEUE')
+            console.log("[INFO]: SENDING RESTART MSG TO QUEUE");
             this.commandqueue.sendCommand("RESTART");
           }, 5000);
         }
@@ -30,8 +31,10 @@ export class PendulumManager {
         if (this.restartCount == 5) {
           console.log("[INFO]: COUNT = 5: RESTARTING...");
           this.restartCount = 0;
+          this.enablePause = false;
           this.reset();
           this.start();
+          this.enablePause = true;
         }
       }
     }
@@ -63,7 +66,7 @@ export class PendulumManager {
       this.stringLength,
       this.angularOffset,
       this.wind,
-      this.damping,
+      this.damping
     );
   }
 
@@ -108,14 +111,25 @@ export class PendulumManager {
   };
 
   stopEveryone = () => {
-    // do stop
-    console.log("Sending STOP MSG to CHANNEL");
-    this.commandqueue.sendCommand("STOP");
+    if (this.simulation_key) {
+      console.log("Sending STOP MSG to CHANNEL");
+      this.commandqueue.sendCommand("STOP");
+    }
   };
 
   pause() {
-    clearInterval(this.simulation_key);
-    this.simulation_key = null;
+    if (this.enablePause) {
+      clearInterval(this.simulation_key);
+      this.simulation_key = null;
+    } else {
+      console.log(
+        "[WARNING]: YOU TRIED TO PAUSE WHILE AUTO-RESTARTING PAUSE COMMAND HAS BEEN DELAYED BY 5s (MAX)"
+      );
+      setTimeout(() => {
+        clearInterval(this.simulation_key);
+        this.simulation_key = null;
+      }, 5000);
+    }
   }
 
   reset() {
