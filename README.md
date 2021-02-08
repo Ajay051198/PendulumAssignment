@@ -33,7 +33,7 @@ A pendulum simulator built for demonstration purposes
 
 ### REST API:
 
-Our frontend uses **`/setparams` to setup the simulation and uses `/start`, `/pause` and `/reset` to control the simulation from an UI. The frontend also periodically polls the `/angle` API to update the angle of the pendulum in the UI. 
+Our frontend uses `/setparams` to setup the simulation and uses `/start`, `/pause` and `/reset` to control the simulation from an UI. The frontend also periodically polls the `/angle` API to update the angle of the pendulum in the UI. 
 
 The `/position` is used to obtain the xy-coordinates of the neighbouring nodes that is used in collision detection function which is called with each update/time-step in the backend pendulum manager class during simulation.
 
