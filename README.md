@@ -33,18 +33,18 @@ A pendulum simulator built for demonstration purposes
 
 ### REST API:
 
-Our frontend uses /setparams to setup the simulation and uses /start, /pause and /reset to control the simulation from an UI. The frontend also periodically polls the /angle API to update the angle of the pendulum in the UI. 
+Our frontend uses **`/setparams` to setup the simulation and uses `/start`, `/pause` and `/reset` to control the simulation from an UI. The frontend also periodically polls the `/angle` API to update the angle of the pendulum in the UI. 
 
-The /position is used to obtain the xy-coordinates of the neighbouring nodes that is used in collision detection function which is called with each update/time-step in the backend pendulum manager class during simulation.
+The `/position` is used to obtain the xy-coordinates of the neighbouring nodes that is used in collision detection function which is called with each update/time-step in the backend pendulum manager class during simulation.
 
 **URLs:**  
 
-- /setparams  [POST] → accepts parameters for a pendulum object and URLs for its left and right neighbours and updates the PendulumManager's pendulum object and neighbour information. The URL returns a JSON response with the status and the pendulum object.
-- /start [POST] → starts the simulation by calling the start method of the PendulumManager.
-- /pause [POST] → pauses the simulation by calling the pause method of the PendulumManager.
-- /reset [POST] → resets the simulation by calling the reset method of the PendulumManager.
-- /angle [GET]→ return a JSON response containing the current angle offset of the pendulum of the pendulum manager.
-- /position → return a JSON response containing the x and y co-ordinates of the pendulum's bob of the pendulum manager.
+- `/setparams`  [POST] → accepts parameters for a pendulum object and URLs for its left and right neighbours and updates the PendulumManager's pendulum object and neighbour information. The URL returns a JSON response with the status and the pendulum object.
+- `/start` ******[POST] → starts the simulation by calling the start method of the PendulumManager.
+- `/pause` [POST] → pauses the simulation by calling the pause method of the PendulumManager.
+- `/reset` [POST] → resets the simulation by calling the reset method of the PendulumManager.
+- `/angle` [GET]→ return a JSON response containing the current angle offset of the pendulum of the pendulum manager.
+- `/position` → return a JSON response containing the x and y co-ordinates of the pendulum's bob of the pendulum manager.
 
 ### Guaranteed delivery communication implentation || AMQP Exchange Fanout
 
@@ -65,44 +65,44 @@ This way we can push the "STOP" and "RESTART" commands to this exchange and all 
 
 - Purpose: A class to represent a point/position and perform operations on it.
 - Attributes:
-    - x → x-coordinate
-    - y → y-coordinate
-    - add() → method to add two position vectors
+    - `x` → x-coordinate
+    - `y` → y-coordinate
+    - `add()` → method to add two position vectors
 
 **Pendulum:**
 
 - Purpose: A class to implement pendulum physics logic
 - Attributes:
-    - origin → Position vector of the origin
-    - stringLength → length of the string attached to the pendulum bob.
-    - angularOffset → initial offset angle of the pendulum.
-    - wind → max-wind for simulation
-    - damping → damping factor for the pendulum
-    - updatePosition() → method to update the offsetAngle by one time step.
-    - getPosition() → method to calculate and return the position vector of the pendulum's bob.
+    - `origin` → Position vector of the origin
+    - `stringLength` → length of the string attached to the pendulum bob.
+    - `angularOffset` → initial offset angle of the pendulum.
+    - `wind` → max-wind for simulation
+    - `damping` → damping factor for the pendulum
+    - `updatePosition()` → method to update the angularOffset by one time step.
+    - `getPosition()` → method to calculate and return the position vector of the pendulum's bob.
 
 **Pendulum Manager:** 
 
 - Purpose: A class to wrap all controls regarding a pendulum simulation into one class.
 - Attributes:
-    - commandqueue → queue to push STOP and RESTART commands in guaranteed communication channel.
-    - simulation_key → a identification key used to start, pause and reset simulations
-    - pendulum → pendulum object attached to the manager class.
-    - restart_count → number of restart messages received
-    - setParams() → method to create a pendulum object with the received parameters along with the information about the neighbouring pendulums.
-    - start() → a method to start simulation by calling the updatePosition method of the pendulum periodically using setInterval() and then in each time step checking for collision between neighbors (using checkcollision() ) and sending a "STOP" message in our commandqueue if there has been a collision.
-    - checkcollision() → method to check if the distance between two neighbours is acceptable and the two are not colliding.
-    - pause() → a method to pause the simulation by clearing the Interval that was set upon start.
-    - reset() → a method to reset the pendulum object.
+    - `commandqueue` → queue to push STOP and RESTART commands in guaranteed communication channel.
+    - `simulation_key` → a identification key used to start, pause and reset simulations
+    - `pendulum` → pendulum object attached to the manager class.
+    - `restart_count` → number of restart messages received
+    - `setParams()` → method to create a pendulum object with the received parameters along with the information about the neighbouring pendulums.
+    - `start()` → a method to start simulation by calling the updatePosition method of the pendulum periodically using setInterval() and then in each time step checking for collision between neighbors (using checkcollision() ) and sending a "STOP" message in our commandqueue if there has been a collision.
+    - `checkcollision()` → method to check if the distance between two neighbours is acceptable and the two are not colliding.
+    - `pause()` → a method to pause the simulation by clearing the Interval that was set upon start.
+    - `reset()` → a method to reset the pendulum object.
 
 **CommandsQueue:**
 
 - Purpose: A class to setup the RabbitMQ publish/subscribe model using channels, exchanges and queues.
 - Attributes:
-    - exchange_name: name of the exchange
-    - channel: RabbitMQ channel
-    - init()→ a method to initialize our RabbitMQ messaging system, this method creates a channel, a fanout exchange in the channel, a queue in the channel and then binds the queue to the exchange to receive messages published to the exchange.
-    - sendCommand() → publishes message to the exchange.
+    - `exchange_name` → name of the exchange
+    - `channel` → RabbitMQ channel
+    - `init()` → a method to initialize our RabbitMQ messaging system, this method creates a channel, a fanout exchange in the channel, a queue in the channel and then binds the queue to the exchange to receive messages published to the exchange. The queue setup and binding is done in `.listen()` method the class.
+    - `sendCommand()` → publishes message to the exchange.
 
 ### Notes: Pendulum Physics
 
