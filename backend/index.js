@@ -55,6 +55,7 @@ app.post("/setparams", (req, res) => {
 
 app.post("/start", (req, res) => {
   if (check(res)) {
+    console.log('Starting simulation')
     return;
   }
   pm.start();
@@ -63,6 +64,7 @@ app.post("/start", (req, res) => {
 
 app.post("/pause", (req, res) => {
   if (check(res)) {
+    console.log('Pausing simulation')
     return;
   }
   pm.pause();
@@ -71,6 +73,7 @@ app.post("/pause", (req, res) => {
 
 app.post("/reset", (req, res) => {
   if (check(res)) {
+    console.log('Reseting simulation')
     return;
   }
   pm.reset();

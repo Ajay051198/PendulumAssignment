@@ -18,18 +18,18 @@ export class PendulumManager {
         if (this.simulation_key) {
           this.pause();
           setTimeout(() => {
+            console.log('Sending RESTART MSG to CHANNEL')
             this.commandqueue.sendCommand("RESTART");
           }, 5000);
-        } else {
-          console.log("DUPLICATE STOP");
         }
       }
 
       if (command === "RESTART") {
+        console.log('RECIEVED RESTART MSG FROM CHANNEL')
         this.restartCount++;
 
         if (this.restartCount == 5) {
-          console.log("ReSARTIN");
+          console.log("RESTARTING...");
           this.restartCount = 0;
           this.reset();
           this.start();
@@ -113,7 +113,7 @@ export class PendulumManager {
 
   stopEveryone = () => {
     // do stop
-    console.log("STOPPING EVERYONE");
+    console.log("Sending STOP MSG to CHANNEL");
     this.commandqueue.sendCommand("STOP");
   };
 
