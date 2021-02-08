@@ -110,3 +110,9 @@ This way we can push the "STOP" and "RESTART" commands to this exchange and all 
 - The mass of the pendulum does not affect its acceleration as it will always be acceleration due to gravity.
 - However the effect of wind will reduce greater the mass of the pendulum. So to implement this logic, the affect of wind is reduced when mass is increased.
 - In the frontend UI, increase in mass is shown with a increase in radius of the pendulum's bob. The fact that a larger radius would mean greater effect of wind is ignore as we can considering mass and not size. (so the larger size is just a representation of the mass and not of the size)
+
+### Notes: Frontend
+
+- The export button, outputs our configuration as a JSON object onto the console which is shown  in the bottom of the screen.
+- The fps (polling rate of the frontend) is variable and default is 5fps or a update every 200ms.
+- In the Frontend, Instead of rendering a Bob with positions (x, y), the angle is used to rotate the div by the top by shifting the rotation origin.
