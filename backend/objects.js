@@ -16,7 +16,6 @@ export class Pendulum {
     angularOffset,
     wind,
     damping,
-    randomWind = false
   ) {
     this.origin = origin;
     this.stringLength = stringLength;
@@ -30,10 +29,7 @@ export class Pendulum {
     this.aAcceleration = 0.0;
     // Arbitrary damping
     this.damping = damping;
-    this.randomWind = randomWind;
     this.wind = wind;
-    // Arbitrary ball radius
-    // this.ballRadius = 24.0;
   }
 
   updatePosition() {
@@ -47,11 +43,8 @@ export class Pendulum {
     // Arbitrary damping
     this.aVelocity *= this.damping;
     // Increment angularOffset
-    if (this.randomWind) {
-      this.angularOffset += this.aVelocity + this.wind;
-    } else {
-      this.angularOffset += this.aVelocity + this.wind;
-    }
+    this.angularOffset += this.aVelocity + this.wind;
+    
   }
 
   getPosition() {

@@ -12,24 +12,23 @@ export class PendulumManager {
   }
 
   commandListener = (command) => {
-    console.log("FROM queue", command);
+    console.log(`[INFO]: RECIEVED FROM QUEUE: [${command}]`);
     if (this.pendulum) {
       if (command === "STOP") {
         if (this.simulation_key) {
           this.pause();
           setTimeout(() => {
-            console.log('Sending RESTART MSG to CHANNEL')
+            console.log('[INFO]: SENDING RESTART MSG TO QUEUE')
             this.commandqueue.sendCommand("RESTART");
           }, 5000);
         }
       }
 
       if (command === "RESTART") {
-        console.log('RECIEVED RESTART MSG FROM CHANNEL')
         this.restartCount++;
 
         if (this.restartCount == 5) {
-          console.log("RESTARTING...");
+          console.log("[INFO]: COUNT = 5: RESTARTING...");
           this.restartCount = 0;
           this.reset();
           this.start();
@@ -44,7 +43,6 @@ export class PendulumManager {
     angularOffset = 45,
     wind = 0,
     damping = 1,
-    randomWind = false,
     leftPendulumURL = null,
     rightPendulumURL = null
   ) {
@@ -53,7 +51,6 @@ export class PendulumManager {
     this.angularOffset = (angularOffset * Math.PI) / 180;
     this.wind = wind;
     this.damping = damping;
-    this.randomWind = randomWind;
     this.leftPendulumURL = leftPendulumURL;
     this.rightPendulumURL = rightPendulumURL;
     this._createPendulum();
@@ -67,7 +64,6 @@ export class PendulumManager {
       this.angularOffset,
       this.wind,
       this.damping,
-      this.randomWind
     );
   }
 

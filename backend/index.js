@@ -39,43 +39,42 @@ app.post("/setparams", (req, res) => {
     damping,
     randomWind,
   } = req.body;
-  console.log("URLs", leftPendulumURL, rightPendulumURL);
   pm.setParams(
     pendulumNum,
     stringLength,
     angularOffset,
     0.002 * wind,
     damping,
-    randomWind,
     leftPendulumURL,
     rightPendulumURL
   );
+  console.log('[REQ]: Parameters have been set')
   return res.json({ status: "success", pendulum_objecy: pm.pendulum });
 });
 
 app.post("/start", (req, res) => {
   if (check(res)) {
-    console.log('Starting simulation')
     return;
   }
+  console.log('[REQ]: Starting simulation')
   pm.start();
   return res.send("success");
 });
 
 app.post("/pause", (req, res) => {
   if (check(res)) {
-    console.log('Pausing simulation')
     return;
   }
+  console.log('[REQ]: Pausing simulation')
   pm.pause();
   return res.send("success");
 });
 
 app.post("/reset", (req, res) => {
   if (check(res)) {
-    console.log('Reseting simulation')
     return;
   }
+  console.log('[REQ]: Reseting simulation')
   pm.reset();
   return res.send("success");
 });
@@ -100,10 +99,4 @@ app.listen(PORT, () => {
   console.log(`listening at http://localhost:${PORT}`);
 });
 
-/*
-    0. During set, send the right and left neighbours backend url
-    1. After update position, check if the left and right neighbours have collided    
-    2. when detected, put a STOP command in rabbitmq queue which others listen
-    3. when a STOP command is received, stop the process, wait for 5 seconds, send a restart
-    4. listen for 4 restarts, then .reset and .start in each node
-*/
+

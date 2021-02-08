@@ -157,7 +157,6 @@ set_btn.addEventListener("click", () => {
         angularOffset: inputs[e].angle,
         wind: inputs.wind/inputs[e].mass,
         damping: 1 - (inputs.damping * 0.005) / 100,
-        randomWind: false,
         leftPendulumURL: idx > 0 ? pend_url(pendulumIds[idx - 1]) : null,
         rightPendulumURL:
           idx < pendulumIds.length - 1 ? pend_url(pendulumIds[idx + 1]) : null,
